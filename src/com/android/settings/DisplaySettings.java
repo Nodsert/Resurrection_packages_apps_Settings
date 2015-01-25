@@ -107,12 +107,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
-<<<<<<< HEAD
     private ListPreference mLcdDensityPreference;
-=======
     private static final String KEY_DOZE_TIMEOUT = "doze_timeout";
 
->>>>>>> a11ba38... [2/2] Settings: Doze (ambient display) timeout
     private FontDialogPreference mFontSizePref;
     private PreferenceScreen mDisplayRotationPreference;
     private PreferenceScreen mScreenColorSettings;
@@ -431,8 +428,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         // Doze timeout
         if (mDozeTimeout != null) {
-            final int statusDozeTimeout = Settings.PAC.getInt(getContentResolver(),
-                    Settings.PAC.DOZE_TIMEOUT, 3000);
+            final int statusDozeTimeout = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_TIMEOUT, 3000);
             // minimum 100 is 1 interval of the 100 multiplier
             mDozeTimeout.setInitValue((statusDozeTimeout / 100) - 1);
         }
@@ -651,8 +648,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         if (preference == mDozeTimeout) {
             int dozeTimeout = Integer.valueOf((String) objValue);
-            Settings.PAC.putInt(getContentResolver(),
-                    Settings.PAC.DOZE_TIMEOUT, dozeTimeout);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_TIMEOUT, dozeTimeout);
         }
         return true;
     }
